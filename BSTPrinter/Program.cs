@@ -27,7 +27,9 @@ namespace BSTPrinter
             var preOrder = tree.GetPreOrderString();
             Console.WriteLine(preOrder);
 
-            BSTPrinter.Print(preOrder);
+            BSTPrinter.Print(preOrder,0);
+
+
         }
     }
 }

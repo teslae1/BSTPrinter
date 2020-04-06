@@ -21,7 +21,7 @@ namespace BSTPrinter
         /// 
         /// </summary>
         /// <param name="binaryTreePreOrder">Should be pre order tree values as single spaced integers</param>
-        /// <param name="distance">Sets the distance between each node </param>
+        /// <param name="distance">The number of slashes between each node </param>
         static public void Print(string binaryTreePreOrder, int distance)
         {
             Console.WriteLine(GetPrintableString(binaryTreePreOrder, distance));
@@ -31,7 +31,7 @@ namespace BSTPrinter
         /// Returns a printable string of BST structure
         /// </summary>
         /// <param name="binaryTreePreOrder">String should be pre order tree values as single spaced integers</param>
-        /// <param name="distance">Sets the distance between each node </param>
+        /// <param name="distance">The number of slashes between each node </param>
         /// <returns></returns>
         public static string GetPrintableString(string binaryTreePreOrder, int distance)
         {
