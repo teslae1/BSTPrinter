@@ -15,7 +15,7 @@ namespace BSTPrinter
             tree.Insert(6);
             tree.Insert(2000);
             tree.Insert(1000);
-
+            
             var preOrder = tree.GetPreOrderString();
             Console.WriteLine(preOrder);
 
