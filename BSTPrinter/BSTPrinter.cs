@@ -12,6 +12,8 @@ namespace BSTPrinter
 {
     static class BSTPrinter
     {
+        private static int distanceBetweenNodes;
+
         /// <summary>
         /// Prints BST 
         /// 
@@ -51,21 +53,15 @@ namespace BSTPrinter
         /// <returns></returns>
         public static string GetPrintableString(string binaryTreePreOrder, int distanceBetweenNodes)
         {
-            SetDistanceBetweenNodes(distanceBetweenNodes);
             if (InputValidated(binaryTreePreOrder))
             {
+                SetDistanceBetweenNodes(distanceBetweenNodes);
                 var graphicalPoints = GetGraphicalPoints(binaryTreePreOrder);
                 var gridGenerator = new GraphicalGridGenerator(graphicalPoints);
                 return gridGenerator.GetPrintable();
             }
 
             return null;
-        }
-
-        private static int distanceBetweenNodes;
-        private static void SetDistanceBetweenNodes(int distance)
-        {
-            distanceBetweenNodes = distance;
         }
 
         static bool InputValidated(string binaryTreePreOrder)
@@ -78,6 +74,11 @@ namespace BSTPrinter
                 throw new FormatException("Invalid format of pre-order values");
 
             return true;
+        }
+        
+        private static void SetDistanceBetweenNodes(int distance)
+        {
+            distanceBetweenNodes = distance;
         }
 
         static List<GraphicalPoint> GetGraphicalPoints(string binaryTreePreOrder)
@@ -99,7 +100,6 @@ namespace BSTPrinter
 
             return numbers;
         }
-
 
         private class GraphicalPointGetter
         {
@@ -128,7 +128,7 @@ namespace BSTPrinter
                     var parentCoordinate = new Coordinate(
                         nodeToInsert.Data < root.Data ? root.Point.SmallestX : root.Point.BiggestX,
                         0);
-                    root.Insert(nodeToInsert,parentCoordinate);
+                    root.Insert(nodeToInsert, parentCoordinate);
                 }
             }
 
@@ -182,7 +182,7 @@ namespace BSTPrinter
                                 parentNodeCoordinate.Y + (distanceBetweenNodes + 1));
                     LeftChild.Insert(nodeToInsert, leftSideCoordinate);
                 }
-                
+
                 void TraverseRight(Node nodeToInsert, Coordinate parentNodeCoordinate)
                 {
                     var rightSideCoordinate = new Coordinate(
@@ -252,6 +252,7 @@ namespace BSTPrinter
                 Y = y;
             }
         }
+
         private class GraphicalPoint
         {
             public int X;
@@ -325,7 +326,7 @@ namespace BSTPrinter
 
                 foreach (GraphicalPoint p in points)
                 {
-                    
+
                     if (p.IsComposite)
                         AddCompositeGraphicsToGrid(p, grid);
                     else
